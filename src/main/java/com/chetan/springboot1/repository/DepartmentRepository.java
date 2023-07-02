@@ -13,4 +13,8 @@ public interface DepartmentRepository extends JpaRepository<Department,Long> {
 
     //https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
 
+    //JPQL for custom query like name starts with
+//    @Query("select d from Department d where d.name like ?1%") //does not work with mongodb
+//    Department getDepartmentByNameStartsWith(String departmentName);
+
 }
