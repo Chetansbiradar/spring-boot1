@@ -64,6 +64,6 @@ public class DepartmentController {
 
     @GetMapping("/department/name/{name}")
     public Department getByName(@PathVariable("name") String departmentName){
-        return departmentService.getByName(departmentName);
+        return departmentService.getDepartmentByName(departmentName);
     }
 }
