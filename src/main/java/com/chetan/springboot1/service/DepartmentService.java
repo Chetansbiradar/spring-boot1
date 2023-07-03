@@ -1,6 +1,7 @@
 package com.chetan.springboot1.service;
 
 import com.chetan.springboot1.entity.Department;
+import com.chetan.springboot1.error.DepartmentNotFoundException;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface DepartmentService {
 
     List<Department> getAllDepartments();
 
-    Department getDepartmentById(Long departmentId);
+    Department getDepartmentById(Long departmentId) throws DepartmentNotFoundException;
 
     void deleteDepartmentById(Long departmentId);
 
