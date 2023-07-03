@@ -1,6 +1,7 @@
 package com.chetan.springboot1.controller;
 
 import com.chetan.springboot1.entity.Department;
+import com.chetan.springboot1.error.DepartmentNotFoundException;
 import com.chetan.springboot1.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{id}")
-    public Department getDepartmentById(@PathVariable("id") Long departmentId){
+    public Department getDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.getDepartmentById(departmentId);
     }
 
