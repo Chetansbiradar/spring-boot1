@@ -1,4 +1,18 @@
+server:
+  port: '8181'
+
+
 spring:
+  profiles.active: dev
+#--- indicates new document without actually creating so that we can create multiple profiles in same file,
+# or we can do application-dev.yml, application-prod.yml or application-test.yml
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -9,6 +23,40 @@ spring:
       ddl-auto: update
     show-sql: 'true'
 message:
-  welcome: Welcome to Spring Boot
-server:
-  port: '8181'
+  welcome: Welcome to Spring Boot [DEVELOPMENT MODE]
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springbootdept
+    password: Chetan@mysql1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+message:
+  welcome: Welcome to Spring Boot [PRODUCTION MODE]
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springbootdept
+    password: Chetan@mysql1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+message:
+  welcome: Welcome to Spring Boot [TESTING MODE]
