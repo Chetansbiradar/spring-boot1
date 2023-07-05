@@ -25,6 +25,13 @@ spring:
 message:
   welcome: Welcome to Spring Boot [DEVELOPMENT MODE]
 
+#this will be used to expose all the endpoints i,e actuator endpoints like /health, /info, /beans, /env, /metrics, /mappings, /shutdown
+manage:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 ---
 
 spring:
@@ -48,7 +55,7 @@ message:
 spring:
   config:
     activate:
-      on-profile: test
+      on-profile:  test
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
