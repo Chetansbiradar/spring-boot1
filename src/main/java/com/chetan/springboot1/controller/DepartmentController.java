@@ -6,6 +6,7 @@ import com.chetan.springboot1.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -29,6 +30,15 @@ public class DepartmentController {
     // You can choose any of the logging frameworks and configure it with SLF4J.
     //By default, SLF4J is configured with NOP (No Operation) logger.
     private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(DepartmentController.class);
+
+//dummy getmapping to show how to read from application.properties
+    @Value("${message.welcome}")
+    private String welcomeMessage;
+    @GetMapping("/test")
+    public String test(){
+        return welcomeMessage;
+    }
+    //end of dummy getmapping to show how to read from application.properties
 
     @PostMapping("/departments")
     public Department saveDepartment(@Valid @RequestBody Department department){
